@@ -1,7 +1,195 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+  <style>
+    /* Reset i podstawy */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #121212;
+      color: #f1f1f1;
+    }
+
+    /* Pasek nawigacyjny */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #1a1a1a;
+      display: flex;
+      justify-content: center;
+      padding: 1rem 0;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    }
+
+    nav a {
+      color: #f44336;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff7961;
+    }
+
+    /* Sekcje */
+    section {
+      padding: 100px 20px;
+      min-height: 100vh;
+    }
+
+    #o-mnie {
+      background-color: #1e1e1e;
+    }
+
+    #stack {
+      background-color: #2c2c2c;
+    }
+
+    #projekty {
+      background-color: #1e1e1e;
+    }
+
+    #kontakt {
+      background-color: #2c2c2c;
+    }
+
+    h1 {
+      color: #f44336;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    ul {
+      list-style-type: square;
+      padding-left: 20px;
+    }
+
+    .project {
+      background: #191919;
+      border-left: 5px solid #f44336;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 8px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 0.5rem 0;
+      border: none;
+      border-radius: 5px;
+      background-color: #2c2c2c;
+      color: #f1f1f1;
+    }
+
+    .contact-form button {
+      background-color: #f44336;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .contact-form button:hover {
+      background-color: #d32f2f;
+    }
+
+    /* Odstęp na górze dla fixed navbar */
+    .spacer {
+      height: 70px;
+    }
+  </style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+  <nav>
+    <a href="#o-mnie">O mnie</a>
+    <a href="#stack">Stack technologiczny</a>
+    <a href="#projekty">Projekty</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+
+  <div class="spacer"></div>
+
+  <section id="o-mnie">
+    <div class="container">
+      <h1>O mnie</h1>
+      <p>Cześć! Nazywam się Michał i jestem pasjonatem programowania, tworzenia gier i aplikacji webowych. Interesuje mnie tworzenie immersyjnych doświadczeń oraz rozwiązań, które mają sens. Uczę się nieustannie i lubię wyzwania.</p>
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="container">
+      <h1>Stack technologiczny</h1>
+      <ul>
+        <li>JavaScript / TypeScript</li>
+        <li>HTML / CSS / SCSS</li>
+        <li>Godot (C# / GDScript)</li>
+        <li>Node.js + Express</li>
+        <li>Python (automatyzacja, AI, backend)</li>
+        <li>MongoDB / PostgreSQL</li>
+        <li>Docker, Git, Linux</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projekty">
+    <div class="container">
+      <h1>Projekty</h1>
+
+      <div class="project">
+        <h2>Gra Horror - Silent Descent</h2>
+        <p>Psychologiczny survival horror osadzony w zapomnianej wiosce, łączący eksplorację, narrację i klimat w stylu Silent Hill.</p>
+      </div>
+
+      <div class="project">
+        <h2>Bot Discord do przypomnień z kalendarza WebDAV</h2>
+        <p>Automatyczny bot w Node.js pobierający wydarzenia z ownCloud (ICS) i wysyłający przypomnienia na kanał Discord.</p>
+      </div>
+
+      <div class="project">
+        <h2>System ekwipunku do gry 2D</h2>
+        <p>Stworzony w Godocie 4.2, obsługuje przeciąganie, usuwanie i interakcje z przedmiotami w stylu klasycznych gier RPG.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt">
+    <div class="container">
+      <h1>Kontakt</h1>
+      <form class="contact-form" onsubmit="submitForm(event)">
+        <input type="text" placeholder="Imię" required />
+        <input type="email" placeholder="Email" required />
+        <textarea rows="5" placeholder="Wiadomość" required></textarea>
+        <button type="submit">Wyślij</button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    function submitForm(event) {
+      event.preventDefault();
+      alert('Dziękuję za wiadomość! Formularz jest tylko demonstracją.');
+    }
+  </script>
 </body>
 </html>
