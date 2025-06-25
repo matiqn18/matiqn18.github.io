@@ -1,0 +1,593 @@
+:root {
+    --main-bg: #121212;
+    --nav-bg: #1a1a1a;
+    --accent: #f44336;
+    --text-light: #f1f1f1;
+    --card-bg: #1e1e1e;
+    --shadow-color: rgba(0, 0, 0, 0.6);
+
+--hex-pattern-size: 90px; 
+    --hex-pattern-color: rgba(244, 67, 54, 0.07);
+}
+
+body[data-theme='light'] {
+    --main-bg: #f0f2f5;
+    --nav-bg: #ffffff;
+    --accent: #d32f2f;
+    --text-light: #212121;
+    --card-bg: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--main-bg);
+    color: var(--text-light);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav { position: fixed; top: 0; width: 100%; background-color: var(--nav-bg); display: flex; justify-content: center; align-items: center; flex-wrap: wrap; padding: 1rem 0; z-index: 999; box-shadow: 0 2px 6px var(--shadow-color); transition: background-color 0.3s; }
+nav .nav-links a { color: var(--accent); text-decoration: none; margin: 0.5rem 1rem; font-weight: bold; transition: color 0.3s; }
+nav .nav-links a:hover { color: #ff7961; }
+.nav-controls { position: absolute; right: 20px; display: flex; align-items: center; gap: 15px; }
+.lang-switch button { background: none; border: 1px solid var(--accent); color: var(--accent); padding: 5px 10px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: background-color 0.3s, color 0.3s; }
+.lang-switch button.active { background-color: var(--accent); color: white; }
+.theme-switch { 
+    display: flex; 
+    align-items: center; 
+}
+
+.theme-switch-label {
+    cursor: pointer;
+    width: 50px;
+    height: 25px;
+    background: #444; 
+    display: block;
+    border-radius: 100px;
+    position: relative;
+    transition: background-color 0.3s;
+}
+
+.theme-switch-label::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 21px;
+    height: 21px;
+    background-color: #fff; 
+    border-radius: 20px;
+    transition: 0.3s;
+    
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23f44336' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px 14px;
+}
+
+#theme-toggle:checked + .theme-switch-label {
+    background: var(--accent);
+}
+
+#theme-toggle:checked + .theme-switch-label::after {
+    left: 100%;
+    transform: translateX(calc(-100% - 2px));
+    
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f44336' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='5'%3E%3C/circle%3E%3Cline x1='12' y1='1' x2='12' y2='3'%3E%3C/line%3E%3Cline x1='12' y1='21' x2='12' y2='23'%3E%3C/line%3E%3Cline x1='4.22' y1='4.22' x2='5.64' y2='5.64'%3E%3C/line%3E%3Cline x1='18.36' y1='18.36' x2='19.78' y2='19.78'%3E%3C/line%3E%3Cline x1='1' y1='12' x2='3' y2='12'%3E%3C/line%3E%3Cline x1='21' y1='12' x2='23' y2='12'%3E%3C/line%3E%3Cline x1='4.22' y1='19.78' x2='5.64' y2='18.36'%3E%3C/line%3E%3Cline x1='18.36' y1='5.64' x2='19.78' y2='4.22'%3E%3C/line%3E%3C/svg%3E");
+}
+
+#theme-toggle { 
+    display: none; 
+}
+.spacer { height: 80px; }
+section { padding: 80px 20px; position: relative }
+.container { max-width: 1100px; margin: 0 auto; }
+#projekty .container { max-width: 100%; }
+h1, h2 { color: var(--accent); margin-bottom: 1rem; }
+h1 { font-size: 2.2rem; text-align: center; }
+
+
+.about-me-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+.profile-picture {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent);
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    flex-shrink: 0;
+}
+#o-mnie p { font-size: 1.1rem; line-height: 1.6; }
+
+.tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+.tech-item img { max-width: 60px; margin-bottom: 0.5rem; filter: grayscale(0.3); }
+
+.honeycomb-wrapper { display: flex; justify-content: center; }
+.project-grid { --s: 280px; --m: 8px; --f: calc(1.732 * var(--s) + 4 * var(--m) - 1px); max-width: 1200px; font-size: 0; margin-top: 3rem; padding-bottom: 150px; overflow: hidden; }
+.project-card { width: var(--s); margin: var(--m); height: calc(var(--s) * 1.1547); display: inline-block; font-size: initial; clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%); margin-bottom: calc(var(--m) - var(--s) * 0.2885); position: relative; cursor: pointer; transition: transform 0.3s ease, filter 0.3s ease; background-color: var(--card-bg); vertical-align: top; }
+.project-grid::before { content: ""; width: calc(var(--s) / 2 + var(--m)); float: left; height: 100%; shape-outside: repeating-linear-gradient( transparent 0 calc(var(--f) - 3px), black 0 var(--f) ); }
+.project-card img, .project-card .desc { position: absolute; top: 0; left: 0; width: 100%; height: 100%; clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%); }
+.project-card img { object-fit: cover; }
+.project-card .desc { display: flex; justify-content: center; align-items: center; background-color: rgba(18, 18, 18, 0.75); color: white; opacity: 0; transition: opacity 0.4s ease; text-align: center; padding: 20px; }
+.project-card:hover { transform: scale(1.05); filter: drop-shadow(0 5px 15px var(--accent)); z-index: 10; }
+.project-card:hover .desc { opacity: 1; }
+.desc h3 { font-size: 1.5rem; font-weight: bold; color: #f1f1f1; }
+
+/* Style dla rozbudowanego modala */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Pozostawiamy dla bezpieczeństwa na małych ekranach */
+    background-color: rgba(0,0,0,0.8);
+    animation: fadeIn 0.5s;
+    /* Usunęliśmy display:flex, aby nie psuć centrowania */
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    margin: 5vh auto; /* Używamy vh dla lepszego pozycjonowania w pionie */
+    padding: 0;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 1100px; /* Zwiększony max-width dla lepszego wyglądu na dużych ekranach */
+    position: relative;
+    box-shadow: 0 5px 20px var(--shadow-color);
+    animation: slideIn 0.5s;
+    overflow: hidden;
+
+    /* NOWOŚĆ: Ograniczamy wysokość i ustawiamy wewnętrzny flexbox */
+    display: flex; /* To sprawia, że .modal-grid wewnątrz będzie się słuchać */
+    max-height: 90vh; /* Modal nigdy nie będzie wyższy niż 90% ekranu */
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+    z-index: 10;
+}
+
+.close-button:hover, .close-button:focus {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.modal-grid {
+    display: flex;
+    flex-direction: row;
+    width: 100%; /* Siatka zajmuje całą dostępną przestrzeń w .modal-content */
+}
+
+/* Karuzela */
+.carousel-container {
+    flex: 1 1 55%;
+    position: relative;
+    background-color: #000;
+}
+
+.slide {
+    display: none; /* Zmieniamy z none na flex, aby działało centrowanie */
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+/* POPRAWKA: Obrazek wraca do elastycznego skalowania */
+.slide img {
+    max-width: 100%;
+    max-height: 100%;
+
+    /* Te właściwości usuwamy, aby nie powodowały konfliktu */
+    width: auto;
+    height: auto;
+    
+    /* 'contain' gwarantuje, że cały obrazek będzie widoczny */
+    object-fit: contain;  /* Wypełnia dostępną przestrzeń bez zniekształceń */
+}
+
+.prev, .next { cursor: pointer; position: absolute; top: 50%; width: auto; margin-top: -22px; padding: 16px; color: white; font-weight: bold; font-size: 20px; transition: 0.6s ease; border-radius: 0 3px 3px 0; user-select: none; background-color: rgba(0,0,0,0.4); }
+.next { right: 0; border-radius: 3px 0 0 3px; }
+.prev:hover, .next:hover { background-color: rgba(0,0,0,0.8); }
+.dots-container { text-align: center; padding: 10px; background-color: rgba(0,0,0,0.5); position: absolute; bottom: 0; width: 100%;}
+.dot { cursor: pointer; height: 15px; width: 15px; margin: 0 2px; background-color: #717171; border-radius: 50%; display: inline-block; transition: background-color 0.6s ease; }
+.dot.active { background-color: var(--accent); }
+.fade { animation-name: fade; animation-duration: 1s; }
+@keyframes fade { from {opacity: .4} to {opacity: 1} }
+
+/* Informacje w modalu */
+.modal-info {
+    flex: 1 1 45%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    
+    /* NOWOŚĆ: Dodajemy przewijanie, jeśli treść się nie mieści */
+    overflow-y: auto;
+}
+
+.modal-header { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+#modal-title { color: var(--accent); margin-bottom: 0; }
+#modal-status-badge { font-size: 0.8rem; padding: 4px 10px; border-radius: 20px; font-weight: bold; background-color: var(--accent); color: #fff; }
+.modal-dates { display: flex; gap: 20px; font-size: 0.85rem; opacity: 0.7; margin: 10px 0 20px 0; flex-wrap: wrap; }
+.modal-dates span { display: inline-flex; align-items: center; gap: 5px; }
+.modal-dates a { color: var(--accent); text-decoration: none; }
+.modal-dates a:hover { text-decoration: underline; }
+#modal-description { line-height: 1.7; flex-grow: 1; }
+.modal-tech { margin: 20px 0; }
+.modal-tech h4 { margin-bottom: 10px; }
+.modal-tech-icons { display: flex; flex-wrap: wrap; gap: 15px; }
+.modal-tech-icons img { height: 32px; width: 32px; }
+.modal-links { display: flex; gap: 15px; flex-wrap: wrap; margin-top: auto; padding-top: 20px; }
+.modal-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; transition: all 0.3s; }
+.modal-btn.github { background-color: #333; color: white; }
+.modal-btn.github:hover { background-color: #555; }
+.modal-btn.download { background-color: var(--accent); color: white; }
+.modal-btn.download:hover { filter: brightness(1.2); }
+.contact-links { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin: 2rem 0; }
+.contact-button { flex: 1 1 180px; max-width: 250px; display: flex; align-items: center; gap: 10px; justify-content: center; background-color: var(--accent); color: #fff; padding: 12px 16px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: all 0.2s ease-in-out; box-shadow: 0 2px 5px var(--shadow-color); }
+.contact-button:hover { transform: scale(1.05); box-shadow: 0 0 10px var(--accent); }
+.contact-button img { width: 24px; height: 24px; filter: brightness(0) invert(1); }
+@keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+@keyframes slideIn { from {transform: translateY(-50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+
+
+#filter-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.filter-hexagon {
+    --s: 60px;
+    --m: 4px;
+    width: var(--s);
+    height: calc(var(--s) * 1.1547);
+    position: relative;
+    background-color: var(--card-bg);
+    clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 0;
+}
+
+.filter-hexagon::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--accent);
+    clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
+    z-index: -1;
+    transition: opacity 0.3s;
+    opacity: 0;
+}
+
+.filter-hexagon:hover::before,
+.filter-hexagon.active::before {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+
+.filter-hexagon:hover, .filter-hexagon.active {
+    border-color: var(--accent);
+    transform: scale(1.1);
+}
+
+.filter-hexagon img {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+}
+
+.filter-hexagon span {
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--text-light);
+}
+
+/* Styl dla ukrywanych kart projektów */
+.project-card.hide {
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    transform: scale(0.9);
+    opacity: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    pointer-events: none; 
+}
+
+
+section > .container {
+    position: relative;
+    z-index: 2;
+}
+
+#o-mnie::before,
+#projekty::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+
+    /* 1. KOLOR WZORU: Tutaj ustawia Pan kolor, jaki ma przyjąć rysunek. */
+    /* Użyjemy koloru tekstu z motywu, czyli białego w trybie ciemnym. */
+    background-color: var(--accent);
+    
+    /* 2. UŻYCIE MASKI: Proszę podmienić 'tlo-sekcji.jpg' na nazwę swojego pliku. */
+    -webkit-mask-image: url('assets/background.png');
+    mask-image: url('assets/background.png');
+    
+    /* 3. SKALOWANIE MASKI: Tak jak poprzednio, cover/center. */
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    
+    /* 4. PRZEZROCZYSTOŚĆ: Kontrolujemy widoczność całego wzoru */
+    opacity: 0.67;
+}
+
+/* Zmieniamy kolor wzoru dla motywu jasnego */
+body[data-theme='light'] #o-mnie::before,
+body[data-theme='light'] #projekty::before {
+     /* W motywie jasnym zmieniamy kolor wzoru na ciemny */
+     background-color: var(--accent); /* To da czarny kolor */
+     opacity: 0.67;
+}
+
+/* Nakładka kolorystyczna na obrazek, która poprawia czytelność tekstu */
+#o-mnie::after,
+#projekty::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Na tej samej warstwie co obrazek */
+    
+    /* Nakładka dla motywu ciemnego (półprzezroczysta czerń) */
+    background-color: rgba(18, 18, 18, 0.75);
+}
+
+/* Zmieniamy kolor nakładki dla motywu jasnego */
+body[data-theme='light'] #o-mnie::after,
+body[data-theme='light'] #projekty::after {
+    /* Nakładka dla motywu jasnego (półprzezroczysta biel) */
+    background-color: rgba(240, 242, 245, 0.75);
+}
+
+
+/* NOWE STYLE: Hierarchiczna sekcja Stack */
+.stack-main-category {
+    font-size: 1.8rem;
+    color: var(--accent);
+    margin-top: 3rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--card-bg);
+}
+
+.stack-subcategory {
+    font-size: 1.3rem;
+    color: var(--text-light);
+    font-weight: 400; /* Lżejsza czcionka niż główny nagłówek */
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-left: 15px;
+    border-left: 4px solid var(--accent);
+    opacity: 0.8;
+}
+
+.tech-item {
+    display: flex; /* Umożliwia centrowanie */
+    flex-direction: column; /* Układa obrazek i tekst w kolumnie */
+    justify-content: center; /* Centruje w pionie */
+    align-items: center; /* Centruje w poziomie */
+    
+    text-decoration: none; /* Usuwa podkreślenie linku */
+    color: var(--text-light); /* Ustawia kolor tekstu zgodny z motywem */
+
+    padding: 1rem;
+    border-radius: 12px;
+    background-color: var(--card-bg);
+    transition: all 0.3s ease-in-out;
+    border: 2px solid transparent;
+}
+
+.tech-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+}
+
+/* ================================== */
+/* === STYLE DLA MENU HAMBURGERA === */
+/* ================================== */
+
+.menu-toggle {
+    display: none; /* Domyślnie ukryty na komputerach */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001; /* Upewniamy się, że jest na wierzchu */
+}
+
+.menu-toggle svg {
+    stroke: var(--accent); /* Kolor ikony z Twoich zmiennych */
+}
+
+
+/* NOWE STYLE: Podsekcja "Hobby" */
+
+.hobbies-section {
+    margin-top: 4rem; /* Duży odstęp od opisu "O mnie" */
+    padding-top: 2rem;
+}
+
+.hobbies-title {
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.hobbies-section p {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 2.5rem auto; /* Wyśrodkowanie i marginesy */
+    line-height: 1.6;
+    opacity: 0.8;
+}
+
+.favorite-games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.game-card {
+    position: relative;
+    height: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end; /* Wyrównuje nakładkę do dołu */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+}
+
+.game-card:hover {
+    transform: scale(1.05);
+}
+
+.game-card-overlay {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(to top, var(--accent) 0%, rgba(0,0,0,0) 100%);
+    color: #fff;
+    box-sizing: border-box; /* Zapewnia, że padding nie psuje rozmiaru */
+}
+
+.game-card h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+
+footer {
+    padding: 2rem 1rem;
+    margin-top: 4rem; /* Odstęp od sekcji Kontakt */
+    background-color: var(--nav-bg); /* Używamy koloru nawigacji dla spójności */
+    border-top: 1px solid var(--card-bg);
+}
+
+footer p {
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.7; /* Lekko stonowany tekst */
+}
+
+
+/* Media queries */
+@media (max-width: 768px) {
+    /* Sekcja "O mnie" na mobilnych */
+    nav {
+        /* Zmieniamy ułożenie, aby kontrolki były po prawej, a hamburger po lewej */
+        justify-content: space-between;
+        padding: 1rem 20px; /* Dodajemy padding po bokach */
+    }
+
+    .menu-toggle {
+        display: block; /* Pokazujemy przycisk hamburgera na telefonach */
+    }
+
+    .nav-links {
+        /* Zmieniamy menu z linkami w panel wysuwany z góry */
+        position: fixed;
+        top: 75px; /* Wysokość nawigacji - dostosuj w razie potrzeby */
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 75px); /* Pełna wysokość minus nawigacja */
+        
+        background-color: var(--nav-bg);
+        
+        /* Układamy linki pionowo */
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 2rem;
+        
+        /* Ukrywamy menu domyślnie (przesuwamy je poza ekran) */
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    /* Klasa .active będzie dodawana przez JavaScript, aby pokazać menu */
+    .nav-links.active {
+        transform: translateX(0);
+        display: flex;
+        flex-direction: column;
+    }
+    
+    nav .nav-links a {
+        margin: 1rem 0; /* Większe odstępy między linkami w pionie */
+        font-size: 1.2rem;
+    }
+    
+    .about-me-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* Modal na mobilnych */
+    .modal-grid { flex-direction: column; }
+    .carousel-container { min-height: 250px; }
+
+    /* Siatka heksagonów na mobilnych */
+    .honeycomb-wrapper { display: block; }
+    .project-grid { font-size: initial; overflow: visible; max-width: 100%; padding-bottom: 0; }
+    .project-grid::before { content: none; }
+    .project-card { display: block; width: 90%; max-width: 400px; height: auto; clip-path: none; border-radius: 12px; margin: 20px auto; overflow: hidden; }
+    .project-card img, .project-card .desc { clip-path: none; position: relative; }
+    .project-card img { display: none;}
+    .project-card .desc { opacity: 1; background: none; color: var(--text-light); padding: 1rem; }
+    .desc h3 { color: var(--accent); }
+}

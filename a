@@ -1,0 +1,33 @@
+/* Informacje w modalu */
+.modal-info {
+    flex: 1 1 45%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    
+    /* NOWOŚĆ: Dodajemy przewijanie, jeśli treść się nie mieści */
+    overflow-y: auto;
+}
+
+.modal-header { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+#modal-title { color: var(--accent); margin-bottom: 0; }
+#modal-status-badge { font-size: 0.8rem; padding: 4px 10px; border-radius: 20px; font-weight: bold; background-color: var(--accent); color: #fff; }
+.modal-dates { display: flex; gap: 20px; font-size: 0.85rem; opacity: 0.7; margin: 10px 0 20px 0; flex-wrap: wrap; }
+.modal-dates span { display: inline-flex; align-items: center; gap: 5px; }
+.modal-dates a { color: var(--accent); text-decoration: none; }
+.modal-dates a:hover { text-decoration: underline; }
+#modal-description { line-height: 1.7; flex-grow: 1; }
+.modal-tech { margin: 20px 0; }
+.modal-tech h4 { margin-bottom: 10px; }
+.modal-tech-icons { display: flex; flex-wrap: wrap; gap: 15px; }
+.modal-tech-icons img { height: 32px; width: 32px; }
+.modal-links { display: flex; gap: 15px; flex-wrap: wrap; margin-top: auto; padding-top: 20px; }
+.modal-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; transition: all 0.3s; }
+.modal-btn.github { background-color: #333; color: white; }
+.modal-btn.github:hover { background-color: #555; }
+.modal-btn.download { background-color: var(--accent); color: white; }
+.modal-btn.download:hover { filter: brightness(1.2); }
+.contact-links { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin: 2rem 0; }
+.contact-button { flex: 1 1 180px; max-width: 250px; display: flex; align-items: center; gap: 10px; justify-content: center; background-color: var(--accent); color: #fff; padding: 12px 16px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: all 0.2s ease-in-out; box-shadow: 0 2px 5px var(--shadow-color); }
+.contact-button:hover { transform: scale(1.05); box-shadow: 0 0 10px var(--accent); }
+.contact-button img { width: 24px; height: 24px; filter: brightness(0) invert(1); }

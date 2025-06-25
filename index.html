@@ -1,195 +1,190 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio</title>
-  <style>
-    /* Reset i podstawy */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #121212;
-      color: #f1f1f1;
-    }
-
-    /* Pasek nawigacyjny */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: #1a1a1a;
-      display: flex;
-      justify-content: center;
-      padding: 1rem 0;
-      z-index: 1000;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.6);
-    }
-
-    nav a {
-      color: #f44336;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #ff7961;
-    }
-
-    /* Sekcje */
-    section {
-      padding: 100px 20px;
-      min-height: 100vh;
-    }
-
-    #o-mnie {
-      background-color: #1e1e1e;
-    }
-
-    #stack {
-      background-color: #2c2c2c;
-    }
-
-    #projekty {
-      background-color: #1e1e1e;
-    }
-
-    #kontakt {
-      background-color: #2c2c2c;
-    }
-
-    h1 {
-      color: #f44336;
-      margin-bottom: 20px;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    ul {
-      list-style-type: square;
-      padding-left: 20px;
-    }
-
-    .project {
-      background: #191919;
-      border-left: 5px solid #f44336;
-      padding: 1rem;
-      margin: 1rem 0;
-      border-radius: 8px;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 0.5rem 0;
-      border: none;
-      border-radius: 5px;
-      background-color: #2c2c2c;
-      color: #f1f1f1;
-    }
-
-    .contact-form button {
-      background-color: #f44336;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .contact-form button:hover {
-      background-color: #d32f2f;
-    }
-
-    /* Odstęp na górze dla fixed navbar */
-    .spacer {
-      height: 70px;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Michała</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <nav>
-    <a href="#o-mnie">O mnie</a>
-    <a href="#stack">Stack technologiczny</a>
-    <a href="#projekty">Projekty</a>
-    <a href="#kontakt">Kontakt</a>
-  </nav>
-
-  <div class="spacer"></div>
-
-  <section id="o-mnie">
-    <div class="container">
-      <h1>O mnie</h1>
-      <p>Cześć! Nazywam się Michał i jestem pasjonatem programowania, tworzenia gier i aplikacji webowych. Interesuje mnie tworzenie immersyjnych doświadczeń oraz rozwiązań, które mają sens. Uczę się nieustannie i lubię wyzwania.</p>
+<body data-theme="dark">
+    <nav>
+    <button id="menu-toggle" class="menu-toggle" aria-label="Otwórz menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+    </button>
+    <div class="nav-links">
+        <a href="#o-mnie" data-pl="O mnie" data-en="About me">O mnie</a>
+        <a href="#stack" data-pl="Stack" data-en="Tech Stack">Stack</a>
+        <a href="#projekty" data-pl="Projekty" data-en="Projects">Projekty</a>
+        <a href="#kontakt" data-pl="Kontakt" data-en="Contact">Kontakt</a>
     </div>
-  </section>
-
-  <section id="stack">
-    <div class="container">
-      <h1>Stack technologiczny</h1>
-      <ul>
-        <li>JavaScript / TypeScript</li>
-        <li>HTML / CSS / SCSS</li>
-        <li>Godot (C# / GDScript)</li>
-        <li>Node.js + Express</li>
-        <li>Python (automatyzacja, AI, backend)</li>
-        <li>MongoDB / PostgreSQL</li>
-        <li>Docker, Git, Linux</li>
-      </ul>
+    <div class="nav-controls">
+        <div class="lang-switch">
+            <button id="lang-pl">PL</button>
+            <button id="lang-en">EN</button>
+        </div>
+        <div class="theme-switch">
+            <input type="checkbox" id="theme-toggle">
+            <label for="theme-toggle" class="theme-switch-label"></label>
+        </div>
     </div>
-  </section>
+</nav>
 
-  <section id="projekty">
-    <div class="container">
-      <h1>Projekty</h1>
+    <div class="spacer"></div>
 
-      <div class="project">
-        <h2>Gra Horror - Silent Descent</h2>
-        <p>Psychologiczny survival horror osadzony w zapomnianej wiosce, łączący eksplorację, narrację i klimat w stylu Silent Hill.</p>
-      </div>
+    <section id="o-mnie">
+        <div class="container">
+            <h1 data-pl="O mnie" data-en="About me">O mnie</h1>
+            <div class="about-me-content">
+                <img src="assets/selfie.jpg" alt="Moje zdjęcie" class="profile-picture">
+                
+                <p 
+                data-pl="Cześć! Jestem Michał, wszechstronny programista z pasją do tworzenia angażujących doświadczeń – od gier wideo, przez aplikacje webowe, aż po inteligentne automatyzacje. Codzienna praca na dwóch głównych systemach operacyjnych, Windows i Linux, pozwala mi dogłębnie zrozumieć ich architekturę i tworzyć elastyczne, wieloplatformowe rozwiązania. W każdym projekcie kieruję się zamiłowaniem do czystego kodu i budowania narracji, która przyciąga i intryguje. Swoją pasję do szybkiego prototypowania regularnie testuję na hackathonach, zwłaszcza podczas cyklicznych spotkań HackYeah, które są dla mnie źródłem inspiracji i nowych wyzwań."
+                data-en="Hi! I'm Michał, a versatile developer with a passion for creating engaging experiences – from video games and web applications to smart automations. My daily work across two major operating systems, Windows and Linux, allows me to deeply understand their architecture and build flexible, cross-platform solutions. In every project, I'm driven by a love for clean code and building narratives that attract and intrigue. I regularly test my passion for rapid prototyping at hackathons, especially during the recurring HackYeah events, which are a source of inspiration and new challenges for me.">
+                    Cześć! Jestem Michał, wszechstronny programista z pasją do tworzenia angażujących doświadczeń – od gier wideo, przez aplikacje webowe, aż po inteligentne automatyzacje. Codzienna praca na dwóch głównych systemach operacyjnych, Windows i Linux, pozwala mi dogłębnie zrozumieć ich architekturę i tworzyć elastyczne, wieloplatformowe rozwiązania. W każdym projekcie kieruję się zamiłowaniem do czystego kodu i budowania narracji, która przyciąga i intryguje. Swoją pasję do szybkiego prototypowania regularnie testuję na hackathonach, zwłaszcza podczas cyklicznych spotkań HackYeah, które są dla mnie źródłem inspiracji i nowych wyzwań.
+                </p>
+            </div>
 
-      <div class="project">
-        <h2>Bot Discord do przypomnień z kalendarza WebDAV</h2>
-        <p>Automatyczny bot w Node.js pobierający wydarzenia z ownCloud (ICS) i wysyłający przypomnienia na kanał Discord.</p>
-      </div>
+            <div class="hobbies-section">
+                <h2 class="hobbies-title" data-pl="Po godzinach..." data-en="After Hours...">Po godzinach...</h2>
+                <p data-pl="Kiedy nie koduję, najczęściej można mnie znaleźć w światach moich ulubionych gier. Cenię w nich przede wszystkim wciągającą fabułę, unikalny klimat i satysfakcjonującą rozgrywkę. Oto kilka tytułów, które ukształtowały mój gust:" 
+                data-en="When I'm not coding, you can most often find me in the worlds of my favorite games. I value them primarily for their immersive stories, unique atmosphere, and satisfying gameplay. Here are a few titles that have shaped my taste:">
+                    Kiedy nie koduję, najczęściej można mnie znaleźć w światach moich ulubionych gier. Cenię w nich przede wszystkim wciągającą fabułę, unikalny klimat i satysfakcjonującą rozgrywkę. Oto kilka tytułów, które ukształtowały mój gust:
+                </p>
+                <div class="favorite-games-grid">
+                    <a href="https://store.steampowered.com/app/65540/Gothic_1/" target="_blank" rel="noopener noreferrer" class="game-card" style="background-image: url('https://images.igdb.com/igdb/image/upload/t_cover_big/co25r2.webp');">
+                        <div class="game-card-overlay">
+                            <h3>Gothic</h3>
+                        </div>
+                    </a>
+                    <a href="https://store.steampowered.com/app/489830/The_Elder_Scrolls_V_Skyrim_Special_Edition" target="_blank" rel="noopener noreferrer" class="game-card" style="background-image: url('https://images.igdb.com/igdb/image/upload/t_cover_big/co1tnw.webp');">
+                        <div class="game-card-overlay">
+                            <h3>TES 5 Skyrim</h3>
+                        </div>
+                    </a>
+                    <a href="https://store.steampowered.com/app/39540/SpellForce__Platinum_Edition/" target="_blank" rel="noopener noreferrer" class="game-card" style="background-image: url('https://images.igdb.com/igdb/image/upload/t_cover_big/co3gma.webp');">
+                        <div class="game-card-overlay">
+                            <h3>Spell Force</h3>
+                        </div>
+                    </a>
+                    <a href="https://store.steampowered.com/app/1086940/Baldurs_Gate_3/" target="_blank" rel="noopener noreferrer" class="game-card" style="background-image: url('https://images.igdb.com/igdb/image/upload/t_cover_big/co670h.webp');">
+                        <div class="game-card-overlay">
+                            <h3>Baldur's Gate 3</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <div class="project">
-        <h2>System ekwipunku do gry 2D</h2>
-        <p>Stworzony w Godocie 4.2, obsługuje przeciąganie, usuwanie i interakcje z przedmiotami w stylu klasycznych gier RPG.</p>
-      </div>
+    <section id="stack">
+        <div class="container">
+            <h1 data-pl="Stack technologiczny" data-en="Technology Stack">Stack technologiczny</h1>
+            <h2 class="stack-main-category" data-pl="Dobra znajomość" data-en="Good knowledge">Dobra znajomość</h2>
+            <h3 class="stack-subcategory" data-pl="Języki" data-en="Languages">Języki</h3>
+            <div class="tech-grid">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5" target="_blank" rel="noopener noreferrer" class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"><div>HTML5</div></a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener noreferrer" class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"><div>CSS3</div></a>
+                <a href="https://www.mysql.com/" target="_blank" rel="noopener noreferrer" class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"><div>MySQL</div></a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer" class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"><div>JavaScript</div></a>
+                <a href="https://www.php.net/" target="_blank" rel="noopener noreferrer" class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP"><div>PHP</div></a>
+                <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer" class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"><div>Python</div></a>
+                <a href="https://dart.dev/" target="_blank" rel="noopener noreferrer" class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" alt="Dart"><div>Dart</div></a>
+            </div>
+            <h3 class="stack-subcategory" data-pl="Narzędzia, Frameworki, Biblioteki i Środowiska" data-en="Tools, Frameworks, Libraries & Environments">Narzędzia, Frameworki, Biblioteki i Środowiska</h3>
+            <div class="tech-grid">
+                <a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer" class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"><div>Git</div></a>
+                <a href="https://flutter.dev/" target="_blank" rel="noopener noreferrer" class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter"><div>Flutter</div></a>
+                 <a href="https://firebase.google.com/" target="_blank" rel="noopener noreferrer" class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-original.svg" alt="Firebase"><div>Firebase</div></a>
+            </div>
+            <h2 class="stack-main-category" data-pl="Średnia znajomość / W trakcie nauki" data-en="Average knowledge / Learning">Średnia znajomość / W trakcie nauki</h2>
+            <h3 class="stack-subcategory" data-pl="Języki" data-en="Languages">Języki</h3>
+            <div class="tech-grid">
+                <a href="https://learn.microsoft.com/en-us/dotnet/csharp/" target="_blank" rel="noopener noreferrer" class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#"><div>C#</div></a>
+                <a href="https://www.gnu.org/software/bash/" target="_blank" rel="noopener noreferrer" class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="bash"><div>Bash</div></a>
+                <a href="https://isocpp.org/" target="_blank" rel="noopener noreferrer" class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++"><div>C++</div></a>
+                <a href="https://www.java.com/" target="_blank" rel="noopener noreferrer" class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"><div>Java</div></a>
+            </div>
+            <h3 class="stack-subcategory" data-pl="Narzędzia, Frameworki, Biblioteki i Środowiska" data-en="Tools, Frameworks, Libraries & Environments">Narzędzia, Frameworki, Biblioteki i Środowiska</h3>
+            <div class="tech-grid">
+                <a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer" class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js"><div>Node.js</div></a>
+                <a href="https://codeigniter.com/" target="_blank" rel="noopener noreferrer" class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/codeigniter/codeigniter-plain.svg" alt="codeigniter"><div>CodeIgniter</div></a>
+                 <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer" class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"><div>Docker</div></a>
+                <a href="https://discord.js.org/" target="_blank" rel="noopener noreferrer" class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/discordjs/discordjs-original.svg" alt="Discord.js"><div>Discord.js</div></a>
+                <a href="https://spring.io/projects/spring-boot" target="_blank" rel="noopener noreferrer" class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="SpringBoot"><div>Spring Boot</div></a>
+                <a href="https://godotengine.org/" target="_blank" rel="noopener noreferrer" class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/godot/godot-original.svg" alt="Godot"><div>Godot</div></a>
+                <a href="https://www.figma.com/" target="_blank" rel="noopener noreferrer" class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"><div>Figma</div></a>
+                <a href="https://www.mongodb.com/" target="_blank" rel="noopener noreferrer" class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="Mongo"><div>MongoDB</div></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="projekty">
+        <div class="container">
+            <h1 data-pl="Projekty" data-en="Projects" style="text-align: center;">Projekty</h1>
+            <div id="filter-container"></div>
+            <div id="projekty-placeholder">
+                <p style="text-align: center;">Ładowanie projektów...</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontakt">
+        <div class="container">
+            <h1 data-pl="Kontakt" data-en="Contact">Kontakt</h1>
+            <div class="contact-links">
+                <a href="https://github.com/matiqn18" target="_blank" rel="noopener noreferrer" class="contact-button"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style="filter: invert(1);"><span>GitHub</span></a>
+                <a href="https://www.linkedin.com/in/michal-lukaszczyk-matian/" target="_blank" rel="noopener noreferrer" class="contact-button"><img src="https://www.svgrepo.com/show/521725/linkedin.svg" alt="LinkedIn" style="filter: invert(1);"><span>LinkedIn</span></a>
+                <a href="mailto:mlukaszczykeu@gmail.com" class="contact-button"><img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email"><span>Email</span></a>
+                <a href="https://signal.me/#eu/iuyztnXFMjq007rORNHcrAxFVfdsVwautWTq71T6uYVzFIvMi_lFEqu8donco2Vhm" target="_blank" rel="noopener noreferrer" class="contact-button"><img src="https://www.svgrepo.com/show/519234/signal.svg" alt="Signal"><span>Signal</span></a>
+            </div>
+        </div>
+    </section>
+
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="modal-grid">
+                <div class="carousel-container">
+                    <a class="prev">&#10094;</a>
+                    <a class="next">&#10095;</a>
+                    <div class="dots-container"></div>
+                </div>
+                <div class="modal-info">
+                    <div class="modal-header">
+                        <h2 id="modal-title"></h2>
+                        <span id="modal-status-badge"></span>
+                    </div>
+                    <div class="modal-dates">
+                        <span id="modal-date-created"></span>
+                        <span id="modal-date-updated"></span>
+                        <span id="modal-license"></span>
+                    </div>
+                    <p id="modal-description"></p>
+                    <div class="modal-tech">
+                        <h4 data-pl="Technologie" data-en="Technologies">Technologie</h4>
+                        <div class="modal-tech-icons"></div>
+                    </div>
+                    <div class="modal-links">
+                        <a href="#" id="github-btn" class="modal-btn github" target="_blank" rel="noopener noreferrer" data-pl="Zobacz kod" data-en="View Code">Zobacz kod</a>
+                        <a href="#" id="download-btn" class="modal-btn download" target="_blank" rel="noopener noreferrer" data-pl="Pobierz" data-en="Download">Pobierz</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </section>
 
-  <section id="kontakt">
-    <div class="container">
-      <h1>Kontakt</h1>
-      <form class="contact-form" onsubmit="submitForm(event)">
-        <input type="text" placeholder="Imię" required />
-        <input type="email" placeholder="Email" required />
-        <textarea rows="5" placeholder="Wiadomość" required></textarea>
-        <button type="submit">Wyślij</button>
-      </form>
-    </div>
-  </section>
 
-  <script>
-    function submitForm(event) {
-      event.preventDefault();
-      alert('Dziękuję za wiadomość! Formularz jest tylko demonstracją.');
-    }
-  </script>
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> Michał Matian Łukaszczyk. <span data-pl="Wszelkie prawa zastrzeżone" data-en="All rights reserved">Wszelkie prawa zastrzeżone</span>.</p>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
 </body>
 </html>
