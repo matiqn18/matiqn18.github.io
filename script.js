@@ -227,7 +227,10 @@ document.addEventListener('DOMContentLoaded', () => {
             element.className = element.className.replace(" active", "");
         }
         slides[slideIndex-1].style.display = "flex";
-        dots[slideIndex-1].className += " active";
+        if (dots[slideIndex - 1]) {
+            dots[slideIndex - 1].className += " active";
+        }
+
     }
 
     // --- Logika Filtrowania ---
