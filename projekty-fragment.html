@@ -1,108 +1,153 @@
 <div class="honeycomb-wrapper">
     <div class="project-grid">
         <div class="project-card" 
-            data-images="assets\projects\datemate\startScreen.png,assets\projects\datemate\mainScreen.png,assets\projects\datemate\cardScreen.png"
-            data-tech="flutter,dart,firebase"
-            data-github-link=""
-            data-download-link="dasd"
-            data-status-pl="Zakończony"
-            data-status-en="Completed"
-            data-date-created="2024-09-21"
-            data-date-updated="2025-05-15"
-            data-title-pl="DateMate" 
-            data-title-en="DateMate"
-            data-license=""
-            data-desc-pl="Aplikacja mobilna stworzona w ramach pracy inżynierskiej to system rekomendacji miejsc (parki, kawiarnie, atrakcje) oparty na autorskiej bazie danych i Firebase, bez użycia zewnętrznych API. Algorytmy rekomendacyjne analizują kontekst użytkownika (lokalizacja, typ miejsca, preferencje), by prezentować dopasowane propozycje. 
-            Obecna wersja działa w oparciu o testową bazę danych obejmującą obszar Górnośląsko-Zagłębiowskiej Metropolii. Projekt stanowi model, który można łatwo rozszerzyć na inne regiony poprzez rozbudowę bazy."
-            data-desc-en="The mobile application developed for the engineering thesis is a place recommendation system (parks, cafés, attractions) based on a custom database and Firebase, with no external APIs used. Recommendation algorithms analyze user context (location, preferences, place type) to suggest tailored options.
-            The current version uses a test database focused on the Upper Silesian metropolitan area. The project is a scalable model - expanding to other regions requires only adding new data.">
-            <img src="assets\projects\datemate\mainScreen.png" alt="DateMate">
-            <div class="desc"><h3 data-pl="DateMate" data-en="DateMate">DateMate</h3></div>
+               data-type="mobile"
+               data-images="assets\projects\datemate\startScreen.png,assets\projects\datemate\mainScreen.png,assets\projects\datemate\cardScreen.png"
+               data-tech="flutter,dart,firebase"
+               data-github-link=""
+               data-download-link="https://mega.nz/file/0ZcBGAjA#cdk9y_n7E1cVJ0IJU6Fg7bPxsoMBXyJCAS4VnX6nP-g"
+               data-status-pl="Zakończony"
+               data-status-en="Completed"
+               data-date-created="2024-09-21"
+               data-date-updated="2025-05-15"
+               data-title-pl="DateMate" 
+               data-title-en="DateMate"
+               data-license=""
+               data-desc-pl="Aplikacja mobilna, którą zaprojektowałem i zrealizowałem jako część pracy inżynierskiej, wspiera użytkowników w wyborze miejsc do spotkań na podstawie wcześniejszych preferencji i historii. Projekt obejmował cały cykl tworzenia oprogramowania - od analizy istniejących rozwiązań i potrzeb użytkowników, przez projektowanie interfejsu (Figma), aż po implementację aplikacji mobilnej (Flutter) oraz zaplecza serwerowego (Firebase + Python).
+                    
+                    Aplikacja działa na systemach Android, korzystając z trójwarstwowej architektury. Dane przechowywane są w nierelacyjnej bazie Firestore, a algorytm rekomendacji zaimplementowano jako funkcję chmurową w Firebase Functions. Rozwiązanie zostało przetestowane i wdrożone pilotażowo w obrębie Górnośląsko-Zagłębiowskiej Metropolii, jednak jego struktura pozwala na łatwą adaptację do innych lokalizacji poprzez rozbudowę bazy miejsc."
+               data-desc-en="As part of my engineering thesis, I developed a mobile application that helps users find meeting spots based on their preferences and past choices. The project covered the full software development cycle: from analyzing existing solutions and user needs, through UI design (Figma), to implementation of a cross-platform mobile app (Flutter) and cloud-based backend (Firebase + Python).
+
+                    The app runs on Android using a three-tier architecture. Data is stored in a NoSQL Firestore database, and the recommendation engine is implemented as a serverless function using Firebase Functions. The system was thoroughly tested and initially deployed in the Upper Silesian-Zagłębie Metropolis. However, the design is flexible enough to be expanded to other regions by growing the place database.">
+               <img src="assets\projects\datemate\mainScreen.png" alt="DateMate">
+               <div class="desc"><h3 data-pl="DateMate" data-en="DateMate">DateMate</h3></div>
         </div>
         <div class="project-card"
-            data-images="assets\projects\botcal\calscreen.png"
-            data-tech="javascript,discordjs,nodejs"
-            data-github-link=""
-            data-download-link="dasd"
-            data-status-pl="Zakończony"
-            data-status-en="Completed"
-            data-date-created="2024-01-18"
-            data-date-updated="2024-04-25"
-            data-license=""
-            data-title-pl="DinnersProject"
-            data-title-en="DinnersProject"
-            data-desc-pl="Wielofunkcyjny bot na Discorda, który integruje się z kalendarzami w formacie iCalendar (ICS) poprzez WebDAV (np. z serwerów ownCloud/Nextcloud). Automatycznie przypomina o nadchodzących wydarzeniach na wyznaczonych kanałach, wspierając organizację pracy w zespole."
-            data-desc-en="A multifunctional Discord bot that integrates with iCalendar (ICS) format calendars via WebDAV (e.g., from ownCloud/Nextcloud servers). It automatically reminds about upcoming events on designated channels, supporting team organization.">
-            <img src="assets\projects\dinners\start.png" alt="Bot Discord">
+               data-images="assets\projects\dinners\start.png,assets\projects\dinners\main.png,assets\projects\dinners\profle.png,assets\projects\dinners\adminPanel.png"
+               data-tech="php,mysql,codeigniter"
+               data-github-link="https://github.com/matiqn18/DinnersProject"
+               data-download-link=""
+               data-preve-link="http://dinningproject.great-site.net/?i=1"
+               data-status-pl="Zakończony"
+               data-status-en="Completed"
+               data-date-created="2024-01-18"
+               data-date-updated="2024-04-25"
+               data-license="GPLv3 (GNU)"
+               data-title-pl="DinnersProject"
+               data-title-en="DinnersProject"
+               data-desc-pl="DinnersProject to aplikacja webowa stworzona z wykorzystaniem frameworka CodeIgniter 4, której celem było stworzenie kompletnego systemu do zarządzania stołówką szkolną. Projekt umożliwia obsługę zamówień posiłków oraz płatności, z podziałem na trzy typy użytkowników: administratorów, księgowych i uczniów.
+
+                    System pozwala administratorom zarządzać cenami posiłków, klasami oraz danymi użytkowników, natomiast księgowi mają dostęp do modułów płatności, raportów PDF i edycji menu. Użytkownicy (uczniowie lub ich opiekunowie) mogą przeglądać jadłospis, zamawiać posiłki i sprawdzać status płatności. Aplikacja została w pełni zrealizowana zgodnie z założeniami i działa jako prototyp systemu stołówki szkolnej."
+               data-desc-en="DinnersProject is a web application built with CodeIgniter 4, designed as a complete solution for managing a school canteen. The main idea behind the project was to streamline the process of ordering meals and handling payments for students, while offering dedicated functionalities for administrators and accountants.
+
+                    The system enables administrators to manage meal prices, class registrations, and user accounts. Accountants can handle user payments, generate PDF reports, and edit the school menu. End users (students or guardians) can browse available meals, place orders, view their history, and check payment statuses. The application was successfully completed as a prototype of a school canteen management system.">
+            <img src="assets\projects\dinners\start.png" alt="MainWebsite">
             <div class="desc"><h3 data-pl="DinnersProject" data-en="DinnersProject">DinnersProject</h3></div>
         </div>
         <div class="project-card"
-             data-images="https://via.placeholder.com/800x600/2e7d32/ffffff?text=Inventory+UI,https://via.placeholder.com/800x600/2e7d32/ffffff?text=Inventory+Code"
-             data-tech="csharp,godot"
-             data-github-link=""
-             data-download-link="dasd"
-             data-status-pl="Zakończony"
-             data-status-en="Completed"
-             data-date-created="2024-09-21"
-             data-date-updated="2025-05-15"
-             data-license=""
-             data-title-pl="Epochs of Battle"
-             data-title-en="Epochs of Battle"
-             data-desc-pl="Zaawansowany system ekwipunku dla gier, stworzony w Godot 4.2. Posiada siatkę 5x3 sloty, funkcjonalność 'przeciągnij i upuść' (drag-and-drop), możliwość dzielenia stosów przedmiotów, oraz prosty system usuwania itemów. Wysoce konfigurowalny i łatwy do zintegrowania."
-             data-desc-en="An advanced inventory system for games, created in Godot 4.2. It features a 5x3 slot grid, drag-and-drop functionality, item stack splitting, and a simple item deletion system. Highly configurable and easy to integrate.">
-             <img src="https://via.placeholder.com/400x200/2e7d32/ffffff?text=Ekwipunek+Godot" alt="Ekwipunek">
-             <div class="desc"><h3 data-pl="Epochs of Battle" data-en="Epochs of Battle">Epochs of Battle</h3></div>
+               data-images="assets\projects\epochs\mainMenu.png,assets\projects\epochs\gameplay.png,assets/projects/epochs/credits.png"
+               data-tech="java, libGDX"
+               data-github-link="https://github.com/matiqn18/Epochs-of-Battle"
+               data-download-link=""
+               data-status-pl="Zakończony"
+               data-status-en="Completed"
+               data-date-created="2024-11-13"
+               data-date-updated="2025-05-23"
+               data-license="GPLv3 (GNU)"
+               data-title-pl="Epochs of Battle"
+               data-title-en="Epochs of Battle"
+               data-desc-pl="Epochs of Battle to dwuwymiarowa gra typu tower defense stworzona z użyciem frameworka libGDX, w której gracz broni swojego królestwa przed niekończącymi się falami wrogów. Kluczowym elementem rozgrywki jest strategiczne rozmieszczanie wież, ulepszanie ich parametrów oraz wykorzystywanie potężnych zaklęć magicznych.
+
+                    Celem gry jest przetrwanie jak najdłużej, broniąc terytorium przed coraz trudniejszymi falami wrogów.
+
+                    Gra została zbudowana w oparciu o bibliotekę libGDX i jest w pełni uruchamialna z wykorzystaniem systemu Gradle. Gotowy plik .jar dostępny jest w sekcji Releases na GitHubie projektu."
+               data-desc-en="Epochs of Battle is a 2D tower defense game developed using the libGDX framework. As the player, your goal is to defend your kingdom from endless waves of enemies by placing towers, upgrading their attributes, and casting powerful magical attacks.
+               
+                    Survive as long as possible while facing increasingly difficult waves of enemies.
+
+                    The game is built with libGDX and can be run via Gradle. A ready-to-play .jar file is available in the Releases section of the project’s GitHub repository.">
+               <img src="assets\projects\epochs\mainMenu.png" alt="MainScreen">
+               <div class="desc"><h3 data-pl="Epochs of Battle" data-en="Epochs of Battle">Epochs of Battle</h3></div>
         </div>
         <div class="project-card"
-             data-images="https://via.placeholder.com/800x600/2e7d32/ffffff?text=Inventory+UI,https://via.placeholder.com/800x600/2e7d32/ffffff?text=Inventory+Code"
-             data-tech="csharp,godot"
-             data-github-link=""
-            data-download-link="dasd"
-            data-status-pl="Zakończony"
-            data-status-en="Completed"
-            data-date-created="2024-09-21"
-            data-date-updated="2025-05-15"
-            data-license=""
-             data-title-pl="DarkWalking"
-             data-title-en="DarkWalking"
-             data-desc-pl="Zaawansowany system ekwipunku dla gier, stworzony w Godot 4.2. Posiada siatkę 5x3 sloty, funkcjonalność 'przeciągnij i upuść' (drag-and-drop), możliwość dzielenia stosów przedmiotów, oraz prosty system usuwania itemów. Wysoce konfigurowalny i łatwy do zintegrowania."
-             data-desc-en="An advanced inventory system for games, created in Godot 4.2. It features a 5x3 slot grid, drag-and-drop functionality, item stack splitting, and a simple item deletion system. Highly configurable and easy to integrate.">
-             <img src="https://via.placeholder.com/400x200/2e7d32/ffffff?text=Ekwipunek+Godot" alt="Ekwipunek">
-             <div class="desc"><h3 data-pl="DarkWalking" data-en="DarkWalking">DarkWalking</h3></div>
+               data-images="assets/projects/dark/ingame.png,assets\projects\dark\door.png,assets/projects/dark/door.png"
+               data-tech="godot"
+               data-github-link="https://github.com/matiqn18/DarkWalking"
+               data-download-link="https://mega.nz/file/UZcWAJQD#1lmshJvkT-KmVsk8-f0Z4FsOp273hQZjIgLpyjAAMfw"
+               data-status-pl="W trakcie"
+               data-status-en="In progress"
+               data-date-created="2024-04-25"
+               data-date-updated="2025-06-15"
+               data-license="GPLv3 (GNU)"
+               data-title-pl="DarkWalking"
+               data-title-en="DarkWalking"
+               data-desc-pl="Ten prosty dungeon crawler stworzony w silniku Godot stawia gracza przed zadaniem znalezienia klucza i drzwi wyjściowych w określonym czasie, poruszając się po ciemnych, klaustrofobicznych korytarzach z jedynym źródłem światła - latarką. Każda rozgrywka jest inna dzięki proceduralnemu generowaniu mapy, co oznacza, że nigdy nie zagrasz dwa razy w ten sam loch.
+               
+               W przyszłości planowane jest dodanie AI, które będzie podążać za graczem, zwiększając poziom zagrożenia i dynamikę rozgrywki."
+               data-desc-en="This simple dungeon crawler, created in the Godot engine, challenges the player to find a key and an exit door within a limited time, navigating through dark, maze-like corridors with only a flashlight for visibility. Thanks to procedural level generation, every game is unique - you'll never play the same dungeon twice.
+               
+               In future updates, an AI enemy that tracks the player is planned, adding more threat and intensity to the experience.">
+               <img src="assets\projects\dark\door.png" alt="GameScreen">
+               <div class="desc"><h3 data-pl="DarkWalking" data-en="DarkWalking">DarkWalking</h3></div>
         </div>
-        <div class="project-card"
-             data-images="https://via.placeholder.com/800x600/2e7d32/ffffff?text=Inventory+UI,https://via.placeholder.com/800x600/2e7d32/ffffff?text=Inventory+Code"
-             data-tech="csharp,godot"
-             data-github-link=""
-            data-download-link="dasd"
-            data-status-pl="Zakończony"
-            data-status-en="Completed"
-            data-date-created="2024-09-21"
-            data-date-updated="2025-05-15"
-            data-license=""
-             data-title-pl="BackupSQL"
-             data-title-en="BackupSQL"
-             data-desc-pl="Zaawansowany system ekwipunku dla gier, stworzony w Godot 4.2. Posiada siatkę 5x3 sloty, funkcjonalność 'przeciągnij i upuść' (drag-and-drop), możliwość dzielenia stosów przedmiotów, oraz prosty system usuwania itemów. Wysoce konfigurowalny i łatwy do zintegrowania."
-             data-desc-en="An advanced inventory system for games, created in Godot 4.2. It features a 5x3 slot grid, drag-and-drop functionality, item stack splitting, and a simple item deletion system. Highly configurable and easy to integrate.">
-             <img src="https://via.placeholder.com/400x200/2e7d32/ffffff?text=Ekwipunek+Godot" alt="Ekwipunek">
-             <div class="desc"><h3 data-pl="BackupSQL" data-en="BackupSQL">BackupSQL</h3></div>
-        </div>
-        <div class="project-card"
-             data-images="https://via.placeholder.com/800x600/2e7d32/ffffff?text=Inventory+UI,https://via.placeholder.com/800x600/2e7d32/ffffff?text=Inventory+Code"
-             data-tech="csharp,godot"
-             data-github-link=""
-            data-download-link="dasd"
-            data-status-pl="Zakończony"
-            data-status-en="Completed"
-            data-date-created="2024-09-21"
-            data-date-updated="2025-05-15"
-            data-license=""
-             data-title-pl="System ekwipunku"
-             data-title-en="Discord cal bot"
-             data-desc-pl="Zaawansowany system ekwipunku dla gier, stworzony w Godot 4.2. Posiada siatkę 5x3 sloty, funkcjonalność 'przeciągnij i upuść' (drag-and-drop), możliwość dzielenia stosów przedmiotów, oraz prosty system usuwania itemów. Wysoce konfigurowalny i łatwy do zintegrowania."
-             data-desc-en="An advanced inventory system for games, created in Godot 4.2. It features a 5x3 slot grid, drag-and-drop functionality, item stack splitting, and a simple item deletion system. Highly configurable and easy to integrate.">
-             <img src="https://via.placeholder.com/400x200/2e7d32/ffffff?text=Ekwipunek+Godot" alt="Ekwipunek">
-             <div class="desc"><h3 data-pl="System ekwipunku" data-en="Discord cal bot">Discord cal bot</h3></div>
-        </div>
-         </div>
+          <div class="project-card"
+               data-images="assets\projects\backup\backupDiagram.png"
+               data-tech="python"
+               data-github-link="https://github.com/matiqn18/BackupSQL"
+               data-download-link=""
+               data-status-pl="Zakończony"
+               data-status-en="Completed"
+               data-date-created="2024-05-04"
+               data-date-updated="2024-06-16"
+               data-license="MIT"
+               data-title-pl="BackupSQL"
+               data-title-en="BackupSQL"
+               data-desc-pl="BackupSQL to lekki skrypt napisany w Pythonie, służący do tworzenia kopii zapasowych baz danych MySQL. Łączy się z bazą, pobiera dane i generuje gotowy plik .sql z możliwością przywracania zawartości. Wspiera konfigurację przez plik lub zmienne środowiskowe i może automatycznie przesyłać backup na zdalny serwer. Idealny do integracji z GitHub Actions i użycia jako moduł w innych projektach."
+               data-desc-en=" BackupSQL is a lightweight Python script for creating SQL backups of MySQL databases. It connects to the database, extracts data, and generates a ready-to-restore .sql file. It supports both file-based and environment variable configuration, and can automatically send backups to a remote server. Perfect for GitHub Actions integration or use as a submodule in other projects.">
+               <img src="assets\projects\backup\backupDiagram.png" alt="diagram">
+               <div class="desc"><h3 data-pl="BackupSQL" data-en="BackupSQL">BackupSQL</h3></div>
+          </div>
+          <div class="project-card"
+               data-images=""
+               data-tech="python"
+               data-github-link="GenreRoulet"
+               data-download-link=""
+               data-status-pl="Zakończony"
+               data-status-en="Completed"
+               data-date-created="2025-01-26"
+               data-date-updated="2025-01-26"
+               data-license="MIT"
+               data-title-pl="Ruletka gatunków"
+               data-title-en="GenreRoulett"
+               data-desc-pl="Prosty, ale funkcjonalny skrypt w Pythonie, który tworzy losowe pary osób w taki sposób, aby każdy uczestnik pojawiał się w podobnej liczbie par. Skrypt może dodatkowo przypisywać kategorie (np. tematy, gatunki gier) do każdej pary, korzystając z pliku tekstowego. Wyniki można zapisać do pliku CSV lub wyświetlić bezpośrednio w terminalu.
+                    
+                    Pomysłem na stworzenie tego narzędzia była potrzeba sprawiedliwego podziału tematów do opracowania między uczestnikami projektu."
+               data-desc-en="A lightweight Python script that generates random, balanced pairs from a list of people, ensuring each person appears roughly the same number of times. Optionally, it can assign categories (e.g., topics or genres) to each pair using a text file. The results are saved to a CSV file or printed directly in the terminal.
+                    
+                    The idea behind creating this tool came from the need to fairly divide topics for development among participants in a project.">
+               <img src="" alt="Ekwipunek">
+               <div class="desc"><h3 data-pl="Ruletka gatunków" data-en="GenreRoulet">Ruletka gatunków</h3></div>
+          </div>
+          <div class="project-card is-logo"
+               data-images=""
+               data-tech="javascript, nodejs, discordjs"
+               data-github-link="https://github.com/matiqn18/CalendarBotDiscord"
+               data-download-link=""
+               data-status-pl="W trakcie"
+               data-status-en="In progress"
+               data-date-created="2025-05-22"
+               data-date-updated="2025-06-08"
+               data-license="MIT"
+               data-title-pl="Discord bot kalendarzowy"
+               data-title-en="Discord calendar bot"
+               data-desc-pl="Bot jest napisany w Node.js, który integruje się z kalendarzem WebDAV (np. ownCloud, Nextcloud) poprzez plik .ics. Obsługuje zarówno wydarzenia jednorazowe, jak i cykliczne, a także przypomnienia typu VALARM. Automatycznie wysyła przypomnienia o wydarzeniach na wybrany kanał Discorda - dzień wcześniej oraz w dniu wydarzenia.
+
+                    Projekt zawiera gotową konfigurację Dockerową oraz zestaw komend /next, /clr, /token. Idealne rozwiązanie dla zespołów, które korzystają z kalendarza zewnętrznego i chcą mieć powiadomienia bezpośrednio na Discordzie."
+               data-desc-en="A Node.js-powered Discord bot that integrates with a WebDAV calendar (e.g., ownCloud, Nextcloud) using .ics files. It parses both single and recurring events, supports VALARM reminders, and sends scheduled notifications to a chosen Discord channel - the evening before and the morning of the event.
+
+                    Includes a ready-to-use Docker setup and slash commands like /next, /clr, and /token. Perfect for teams that use external calendars and want direct event alerts in their Discord server.">
+               <img src="assets\projects\botcal\Discord-Symbol-Blurple.png" alt="Discord logo">
+               <div class="desc"><h3 data-pl="Discord bot kalendarzowy" data-en="Discord calendar bot">Discord bot kalendarzowy</h3></div>
+          </div>
+          </div>
 </div>

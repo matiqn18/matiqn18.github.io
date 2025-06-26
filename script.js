@@ -31,7 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
         codeigniter: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/codeigniter/codeigniter-plain.svg',
         docker: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
         spring: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg',
-        figma: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg'
+        figma: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg',
+        libgdx: 'https://libgdx.com/assets/brand/stacked.png'
     };
     
     // --- Inicjalizacja motywu i języka ---
@@ -68,115 +69,136 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // --- Logika Modala i Karuzeli ---
     function attachModalListeners() {
-        const modalTitle = document.getElementById('modal-title');
-        const modalDescription = document.getElementById('modal-description');
-        const carouselContainer = document.querySelector('.carousel-container');
-        const dotsContainer = document.querySelector('.dots-container');
-        const techIconsContainer = document.querySelector('.modal-tech-icons');
-        const githubBtn = document.getElementById('github-btn');
-        
-        // NOWE ZMIENNE DLA NOWYCH ELEMENTÓW
-        const downloadBtn = document.getElementById('download-btn');
-        const statusBadge = document.getElementById('modal-status-badge');
-        const dateCreatedSpan = document.getElementById('modal-date-created');
-        const dateUpdatedSpan = document.getElementById('modal-date-updated');
-        const licenseSpan = document.getElementById('modal-license');
+    // Definiujemy wszystkie elementy modala, które będziemy wypełniać
+    const modalContent = document.querySelector('.modal-content');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDescription = document.getElementById('modal-description');
+    const carouselContainer = document.querySelector('.carousel-container');
+    const dotsContainer = document.querySelector('.dots-container');
+    const techIconsContainer = document.querySelector('.modal-tech-icons');
+    const githubBtn = document.getElementById('github-btn');
+    const downloadBtn = document.getElementById('download-btn');
+    const statusBadge = document.getElementById('modal-status-badge');
+    const dateCreatedSpan = document.getElementById('modal-date-created');
+    const dateUpdatedSpan = document.getElementById('modal-date-updated');
+    const licenseSpan = document.getElementById('modal-license');
+    const prevButton = carouselContainer.querySelector('.prev');
+    const nextButton = carouselContainer.querySelector('.next');
+    const preveBtn = document.getElementById('preve-btn');
 
-        // Mapa licencji
-        const licenseUrlMap = {
-            'MIT': 'https://opensource.org/licenses/MIT',
-            'GNU GPLv3': 'https://www.gnu.org/licenses/gpl-3.0.html',
-            'Apache 2.0': 'https://opensource.org/licenses/Apache-2.0'
-        };
+    const licenseUrlMap = {
+        'MIT': 'https://opensource.org/licenses/MIT',
+        'GNU GPLv3': 'https://www.gnu.org/licenses/gpl-3.0.html',
+        'Apache 2.0': 'https://opensource.org/licenses/Apache-2.0'
+    };
 
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('click', () => {
-                const currentLang = localStorage.getItem('language') || 'pl';
-                const dataset = card.dataset;
-                const langKey = currentLang.charAt(0).toUpperCase() + currentLang.slice(1);
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const currentLang = localStorage.getItem('language') || 'pl';
+            const dataset = card.dataset;
+            const langKey = currentLang.charAt(0).toUpperCase() + currentLang.slice(1);
+            
+            const images = (dataset.images || '').split(',').filter(img => img);
+            
+            modalContent.classList.toggle('no-carousel', images.length === 0);
+            const showControls = images.length > 1;
+            prevButton.style.display = showControls ? 'block' : 'none';
+            nextButton.style.display = showControls ? 'block' : 'none';
+            dotsContainer.style.display = showControls ? 'block' : 'none';
 
-                // Wypełnianie modala
-                modalTitle.innerText = dataset[`title${langKey}`] || dataset.titlePl;
-                modalDescription.innerText = dataset[`desc${langKey}`] || dataset.descPl;
+            modalTitle.innerText = dataset[`title${langKey}`] || dataset.titlePl;
+            modalDescription.innerText = dataset[`desc${langKey}`] || dataset.descPl;
+            
+            // Logika statusu i jego kolorów
+            const statusPL = dataset.statusPl || '';
+            const statusEN = (dataset.statusEn || '').toLowerCase();
+            statusBadge.innerText = (currentLang === 'pl' ? statusPL : dataset.statusEn) || '';
+            statusBadge.style.display = statusPL ? 'inline-block' : 'none';
+            statusBadge.className = 'modal-status-badge'; // Reset do klasy bazowej
+            if (statusEN === 'completed') {
+                statusBadge.classList.add('status-completed');
+            } else if (statusEN === 'in development') {
+                statusBadge.classList.add('status-in-development');
+            } else if (statusEN === 'archived') {
+                statusBadge.classList.add('status-archived');
+            }
+
+            dateCreatedSpan.innerHTML = dataset.dateCreated ? `<b data-pl="Stworzono:" data-en="Created:">Stworzono:</b> ${dataset.dateCreated}` : '';
+            dateUpdatedSpan.innerHTML = dataset.dateUpdated ? `<b data-pl="Aktualizacja:" data-en="Updated:">Aktualizacja:</b> ${dataset.dateUpdated}` : '';
+            
+            if (dataset.license) {
+                const licenseUrl = licenseUrlMap[dataset.license];
+                let licenseHTML = `<b data-pl="Licencja:" data-en="License:">Licencja:</b> `;
+                licenseHTML += licenseUrl ? `<a href="${licenseUrl}" target="_blank" rel="noopener noreferrer">${dataset.license}</a>` : dataset.license;
+                licenseSpan.innerHTML = licenseHTML;
+                licenseSpan.style.display = 'inline-flex';
+            } else {
+                licenseSpan.style.display = 'none';
+            }
+
+            githubBtn.style.display = dataset.githubLink ? 'inline-flex' : 'none';
+            githubBtn.href = dataset.githubLink || '#';
+            
+            downloadBtn.style.display = dataset.downloadLink ? 'inline-flex' : 'none';
+            downloadBtn.href = dataset.downloadLink || '#';
+            
+            if (preveBtn) {
+                preveBtn.style.display = dataset.preveLink ? 'inline-flex' : 'none';
+                preveBtn.href = dataset.preveLink || '#';
+            }
+            
+
+            const technologies = (dataset.tech || '').split(',').filter(tech => tech);
+            
+            carouselContainer.querySelectorAll('.slide').forEach(s => s.remove());
+            dotsContainer.innerHTML = '';
+            techIconsContainer.innerHTML = '';
+
+            images.forEach((imgSrc, i) => {
+                const slide = document.createElement('div');
+                slide.className = 'slide fade';
+                slide.innerHTML = `<img src="${imgSrc}" alt="${modalTitle.innerText} screenshot ${i+1}">`;
+                carouselContainer.insertBefore(slide, prevButton);
                 
-                // NOWA LOGIKA DO OBSŁUGI DODATKOWYCH DANYCH
-                const status = dataset[`status${langKey}`] || dataset.statusPl;
-                statusBadge.innerText = status || '';
-                statusBadge.style.display = status ? 'inline-block' : 'none';
-
-                dateCreatedSpan.innerHTML = dataset.dateCreated ? `<b data-pl="Stworzono:" data-en="Created:">Stworzono:</b> ${dataset.dateCreated}` : '';
-                dateUpdatedSpan.innerHTML = dataset.dateUpdated ? `<b data-pl="Aktualizacja:" data-en="Updated:">Aktualizacja:</b> ${dataset.dateUpdated}` : '';
-                
-                if (dataset.license) {
-                    const licenseUrl = licenseUrlMap[dataset.license];
-                    let licenseHTML = `<b data-pl="Licencja:" data-en="License:">Licencja:</b> `;
-                    licenseHTML += licenseUrl ? `<a href="${licenseUrl}" target="_blank" rel="noopener noreferrer">${dataset.license}</a>` : dataset.license;
-                    licenseSpan.innerHTML = licenseHTML;
-                    licenseSpan.style.display = 'inline-flex';
-                } else {
-                    licenseSpan.style.display = 'none';
-                }
-
-                githubBtn.style.display = dataset.githubLink ? 'inline-flex' : 'none';
-                githubBtn.href = dataset.githubLink || '#';
-                
-                downloadBtn.style.display = dataset.downloadLink ? 'inline-flex' : 'none';
-                downloadBtn.href = dataset.downloadLink || '#';
-
-                // Istniejąca logika karuzeli i ikonek
-                const images = (dataset.images || '').split(',').filter(img => img);
-                const technologies = (dataset.tech || '').split(',').filter(tech => tech);
-                
-                carouselContainer.querySelectorAll('.slide').forEach(s => s.remove());
-                dotsContainer.innerHTML = '';
-                techIconsContainer.innerHTML = '';
-
-                images.forEach((imgSrc, i) => {
-                    const slide = document.createElement('div');
-                    slide.className = 'slide fade';
-                    slide.innerHTML = `<img src="${imgSrc}" alt="${modalTitle.innerText} screenshot ${i+1}">`;
-                    carouselContainer.insertBefore(slide, carouselContainer.querySelector('.prev'));
+                if (images.length > 1) {
                     const dot = document.createElement('span');
                     dot.className = 'dot';
                     dot.onclick = () => currentSlide(i + 1);
                     dotsContainer.appendChild(dot);
-                });
-                
-                technologies.forEach(tech => {
-                    const techKey = tech.trim().toLowerCase();
-                    if(techIconMap[techKey]) {
-                        const icon = document.createElement('img');
-                        icon.src = techIconMap[techKey];
-                        icon.alt = tech.trim();
-                        icon.title = tech.trim();
-                        techIconsContainer.appendChild(icon);
-                    }
-                });
-
-                slideIndex = 1;
-                showSlides(slideIndex);
-                modal.style.display = 'block';
-                setLanguage(currentLang);
+                }
             });
+            
+            technologies.forEach(tech => {
+                const techKey = tech.trim().toLowerCase();
+                if(techIconMap[techKey]) {
+                    const icon = document.createElement('img');
+                    icon.src = techIconMap[techKey];
+                    icon.alt = tech.trim();
+                    icon.title = tech.trim();
+                    techIconsContainer.appendChild(icon);
+                }
+            });
+
+            slideIndex = 1;
+            showSlides(slideIndex);
+            modal.style.display = 'block';
+            setLanguage(currentLang);
         });
+    });
 
-        closeModal.addEventListener('click', () => { modal.style.display = 'none'; });
-        window.addEventListener('click', (event) => { if (event.target == modal) { modal.style.display = 'none'; } });
-
-        document.querySelector('.prev').addEventListener('click', () => plusSlides(-1));
-        document.querySelector('.next').addEventListener('click', () => plusSlides(1));
-    }
+    closeModal.addEventListener('click', () => { modal.style.display = 'none'; });
+    window.addEventListener('click', (event) => { if (event.target == modal) { modal.style.display = 'none'; } });
+    document.querySelector('.prev').addEventListener('click', () => plusSlides(-1));
+    document.querySelector('.next').addEventListener('click', () => plusSlides(1));
+}
 
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.querySelector('.nav-links');
 
-    // Dodajemy nasłuchiwanie na kliknięcie przycisku
     menuToggle.addEventListener('click', () => {
-        // Dodaje lub usuwa klasę 'active' z menu
         navLinks.classList.toggle('active');
     });
 
-    // Opcjonalnie: zamykanie menu po kliknięciu w link
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('active');
